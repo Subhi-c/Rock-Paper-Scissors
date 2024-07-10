@@ -52,3 +52,41 @@ body {
 .m-10 {
   margin-top: 10px;
 }
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+.container {
+  width: 350px;
+}
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.img {
+  background-color: #fff;
+  border-radius: 50%;
+}
+img {
+  padding: 35px;
+}
+.pyramid {
+  background: url(./assets/images/bg-triangle.svg);
+  background-repeat: no-repeat;
+}
+.rock {
+  border: 15px solid hsl(349, 71%, 52%);
+}
+.paper {
+  border: 15px solid hsl(230, 89%, 62%);
+}
+.scissors {
+  border: 15px solid hsl(39, 89%, 49%);
+}
+.removeBg {
+  background: unset !important;
+}
