@@ -1,5 +1,12 @@
-import React, { useState } from "react";
-function Usercomponent({ youpicked, setyoupicked }) {
+import React, { useEffect, useState } from "react";
+function Usercomponent({
+  youpicked,
+  setyoupicked,
+  youWin,
+  setyouWin,
+  userpicked,
+  setuserpicked,
+}) {
   const [bgImage, setBgImage] = useState(
     "url(./assets/images/bg-triangle.svg)"
   );
@@ -9,11 +16,26 @@ function Usercomponent({ youpicked, setyoupicked }) {
   function handleUserChoice(choice) {
     console.log(choice);
     setyoupicked(true);
-    if (choice == "paper") setisPaper(true);
-    if (choice == "rock") setisRock(true);
-    if (choice == "scissors") setisScissors(true);
+    if (choice == "paper") {
+      setisPaper(true);
+      setuserpicked(0);
+    }
+    if (choice == "rock") {
+      setisRock(true);
+      setuserpicked(1);
+    }
+    if (choice == "scissors") {
+      setisScissors(true);
+      setuserpicked(2);
+    }
   }
-  console.log(youpicked, "you picked");
+  // useEffect(() => {
+  //   setisPaper(false);
+  //   setisRock(false);
+  //   setisScissors(false);
+  //   setuserpicked();
+  // });
+  console.log(youpicked, "YOU PICKED");
   return (
     <>
       {!youpicked ? (
@@ -52,49 +74,60 @@ function Usercomponent({ youpicked, setyoupicked }) {
           </div>
         </div>
       ) : (
-        <div className="background">
-          <div className="container">
-            <div className="pyramid" style={{ backgroundImage: bgImage }}>
-              <div className="row top">
-                {isPaper ? (
-                  <div className="img paper">
-                    <img
-                      src="./src/assets/images/icon-paper.svg"
-                      alt="Image 2"
-                      className="pyramid-img"
-                    />
-                  </div>
-                ) : (
-                  ""
-                )}
-                {isRock ? (
-                  <div className="img scissors">
-                    <img
-                      src="./src/assets/images/icon-scissors.svg"
-                      alt="Image 3"
-                      className="pyramid-img"
-                    />
-                  </div>
-                ) : (
-                  ""
-                )}
-              </div>
-              <div className="row bottom">
-                {isScissors ? (
-                  <div className="img rock">
-                    <img
-                      src="./src/assets/images/icon-rock.svg"
-                      alt="Image 1"
-                      className="pyramid-img"
-                    />
-                  </div>
-                ) : (
-                  ""
-                )}
+        <>
+          <div className="background">
+            <div className="container">
+              <div className="pyramid" style={{ backgroundImage: bgImage }}>
+                <div className="center">
+                  {isPaper ? (
+                    <>
+                      <p className="picked">YOU PICKED</p>
+                      <div className="imgselected paper">
+                        <img
+                          src="./src/assets/images/icon-paper.svg"
+                          alt="Image 2"
+                          className="pyramid-img"
+                        />
+                      </div>
+                    </>
+                  ) : (
+                    ""
+                  )}
+                  {isRock ? (
+                    <>
+                      <p className="picked">YOU PICKED</p>
+                      <div className="imgselected scissors">
+                        <img
+                          src="./src/assets/images/icon-scissors.svg"
+                          alt="Image 3"
+                          className="pyramid-img"
+                        />
+                      </div>
+                    </>
+                  ) : (
+                    ""
+                  )}
+                </div>
+                <div className="row bottom">
+                  {isScissors ? (
+                    <>
+                      <p className="picked">YOU PICKED</p>
+                      <div className="imgselected rock">
+                        <img
+                          src="./src/assets/images/icon-rock.svg"
+                          alt="Image 1"
+                          className="pyramid-img"
+                        />
+                      </div>
+                    </>
+                  ) : (
+                    ""
+                  )}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </>
       )}
     </>
   );
