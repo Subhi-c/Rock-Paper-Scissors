@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-function Computercomponent({
+
+function ComputerComponent({
   cmppicked,
   setcmppicked,
   youWin,
@@ -8,58 +9,81 @@ function Computercomponent({
   setuserpicked,
   result,
   setresult,
+  score,
+  setscore,
+  isComPaper,
+  setisComPaper,
+  isComRock,
+  setisComRock,
+  isComScissors,
+  setisComScissors,
 }) {
-  const [isPaper, setisPaper] = useState(false);
-  const [isRock, setisRock] = useState(false);
-  const [isScissors, setisScissors] = useState(false);
-  const [cmpChoice, setcmpChoice] = useState(0);
-  function handleUserChoice(choice) {
-    console.log(choice);
-    //setyoupicked(true);
-    if (choice == 0) {
-      setisPaper(true);
-      if (userpicked == 0) {
-        setresult("DRAW");
-      } else if (choice == 1) {
-        setresult("YOU WIN");
-      } else {
-        setresult("YOU LOST");
-      }
-    }
-    if (choice == 1) {
-      setisRock(true);
-      if (userpicked == 1) {
-        setresult("DRAW");
-      } else if (choice == 0) {
-        setresult("YOU WIN");
-      } else {
-        setresult("YOU LOST");
-      }
-    }
-    if (choice == 2) {
-      setisScissors(true);
-      if (userpicked == 2) {
-        setresult("DRAW");
-      } else if (choice == 0) {
-        setresult("YOU WIN");
-      } else {
-        setresult("YOU LOST");
-      }
-    }
-  }
+  const [cmpChoice, setcmpChoice] = useState(null);
+
   useEffect(() => {
-    setcmpChoice(Math.floor(Math.random() * 3));
-    handleUserChoice(cmpChoice);
-  }, []);
+    // Generate a random choice for the computer
+    const choice = Math.floor(Math.random() * 3);
+    setcmpChoice(choice);
+  }, []); // Empty dependency array to ensure it only runs once on mount
+
+  useEffect(() => {
+    if (cmpChoice === null) return;
+
+    console.log("Computer choice:", cmpChoice);
+
+    if (cmpChoice === 0) {
+      setisComPaper(true);
+      if (userpicked === 0) {
+        setresult("DRAW");
+      } else if (userpicked === 2) {
+        setresult("YOU WIN");
+        setscore((p) => p + 5);
+      } else {
+        setresult("YOU LOST");
+        setscore(0);
+      }
+    } else if (cmpChoice === 1) {
+      setisComRock(true);
+      if (userpicked === 1) {
+        setresult("DRAW");
+      } else if (userpicked === 0) {
+        setresult("YOU WIN");
+        setscore((p) => p + 5);
+      } else {
+        setresult("YOU LOST");
+        setscore(0);
+      }
+    } else if (cmpChoice === 2) {
+      setisComScissors(true);
+      if (userpicked === 2) {
+        setresult("DRAW");
+      } else if (userpicked === 0) {
+        setresult("YOU WIN");
+        setscore((p) => p + 5);
+      } else {
+        setresult("YOU LOST");
+        setscore(0);
+      }
+    }
+  }, [
+    cmpChoice,
+    userpicked,
+    setisComPaper,
+    setisComRock,
+    setisComScissors,
+    setresult,
+    setscore,
+  ]);
+
   return (
     <>
       <div className="cmpbackground">
         <div className="container">
-          <div className="pyramid">
+          <div className="pyramid" style={{ backgroundImage: "unset" }}>
             <div className="center">
-              {isPaper ? (
+              {isComPaper && (
                 <>
-                  <p className="picked">YOU PICKED</p>
+                  <p className="picked">HOUSE PICKED</p>
                   <div className="imgselected paper">
                     <img
                       src="./src/assets/images/icon-paper.svg"
@@ -68,28 +92,10 @@ function Computercomponent({
                     />
                   </div>
                 </>
-              ) : (
-                ""
               )}
-              {isRock ? (
+              {isComRock && (
                 <>
-                  <p className="picked">YOU PICKED</p>
-                  <div className="imgselected scissors">
-                    <img
-                      src="./src/assets/images/icon-scissors.svg"
-                      alt="Image 3"
-                      className="pyramid-img"
-                    />
-                  </div>
-                </>
-              ) : (
-                ""
-              )}
-            </div>
-            <div className="row bottom">
-              {isScissors ? (
-                <>
-                  <p className="picked">YOU PICKED</p>
+                  <p className="picked">HOUSE PICKED</p>
                   <div className="imgselected rock">
                     <img
                       src="./src/assets/images/icon-rock.svg"
@@ -98,8 +104,20 @@ function Computercomponent({
                     />
                   </div>
                 </>
-              ) : (
-                ""
+              )}
+            </div>
+            <div className="row bottom">
+              {isComScissors && (
+                <>
+                  <p className="picked">HOUSE PICKED</p>
+                  <div className="imgselected scissors">
+                    <img
+                      src="./src/assets/images/icon-scissors.svg"
+                      alt="Image 3"
+                      className="pyramid-img"
+                    />
+                  </div>
+                </>
               )}
             </div>
           </div>
@@ -108,4 +126,5 @@ function Computercomponent({
     </>
   );
 }
-export default Computercomponent;
+
+export default ComputerComponent;

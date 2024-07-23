@@ -6,13 +6,16 @@ function Usercomponent({
   setyouWin,
   userpicked,
   setuserpicked,
+  isPaper,
+  setisPaper,
+  isRock,
+  setisRock,
+  isScissors,
+  setisScissors,
 }) {
   const [bgImage, setBgImage] = useState(
     "url(./assets/images/bg-triangle.svg)"
   );
-  const [isPaper, setisPaper] = useState(false);
-  const [isRock, setisRock] = useState(false);
-  const [isScissors, setisScissors] = useState(false);
   function handleUserChoice(choice) {
     console.log(choice);
     setyoupicked(true);
@@ -29,13 +32,9 @@ function Usercomponent({
       setuserpicked(2);
     }
   }
-  // useEffect(() => {
-  //   setisPaper(false);
-  //   setisRock(false);
-  //   setisScissors(false);
-  //   setuserpicked();
-  // });
-  console.log(youpicked, "YOU PICKED");
+  useEffect(() => {
+    console.log(userpicked, "user picked");
+  }, [userpicked]);
   return (
     <>
       {!youpicked ? (
@@ -93,7 +92,7 @@ function Usercomponent({
                   ) : (
                     ""
                   )}
-                  {isRock ? (
+                  {isScissors ? (
                     <>
                       <p className="picked">YOU PICKED</p>
                       <div className="imgselected scissors">
@@ -109,7 +108,7 @@ function Usercomponent({
                   )}
                 </div>
                 <div className="row bottom">
-                  {isScissors ? (
+                  {isRock ? (
                     <>
                       <p className="picked">YOU PICKED</p>
                       <div className="imgselected rock">

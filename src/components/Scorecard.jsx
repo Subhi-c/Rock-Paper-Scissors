@@ -1,4 +1,4 @@
-function Scorecard() {
+function Scorecard({ score, setscore }) {
   return (
     <>
       <div className="score-card">
@@ -18,7 +18,7 @@ function Scorecard() {
             <p>SCORE</p>
           </div>
           <div>
-            <h2 className="f-24">12</h2>
+            <h2 className="f-24">{score}</h2>
           </div>
         </div>
       </div>
