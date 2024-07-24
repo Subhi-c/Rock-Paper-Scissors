@@ -4,6 +4,7 @@ import Computercomponent from "./components/Computercomponent";
 import Scorecard from "./components/Scorecard";
 import Usercomponent from "./components/Usercomponent";
 import Resultcomponent from "./components/Resultcomponent";
+import Rules from "./components/Rules";
 
 function App() {
   const [youpicked, setyoupicked] = useState(false);
@@ -72,6 +73,9 @@ function App() {
           setisComScissors={setisComScissors}
         />
       </div>
+      <footer className="footer">
+        <Rules />
+      </footer>
     </>
   );
 }

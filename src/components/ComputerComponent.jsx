@@ -106,20 +106,18 @@ function ComputerComponent({
                 </>
               )}
             </div>
-            <div className="row bottom">
-              {isComScissors && (
-                <>
-                  <p className="picked">HOUSE PICKED</p>
-                  <div className="imgselected scissors">
-                    <img
-                      src="./src/assets/images/icon-scissors.svg"
-                      alt="Image 3"
-                      className="pyramid-img"
-                    />
-                  </div>
-                </>
-              )}
-            </div>
+            {isComScissors && (
+              <>
+                <p className="picked">HOUSE PICKED</p>
+                <div className="imgselected scissors">
+                  <img
+                    src="./src/assets/images/icon-scissors.svg"
+                    alt="Image 3"
+                    className="pyramid-img"
+                  />
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>
