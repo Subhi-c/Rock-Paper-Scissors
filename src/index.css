@@ -132,3 +132,9 @@ button {
   justify-content: flex-end;
   flex-direction: row;
 }
+.rulesBtn {
+  background-color: transparent;
+  border: 2px solid white;
+  color: #fff;
+  border-radius: 5px;
+}

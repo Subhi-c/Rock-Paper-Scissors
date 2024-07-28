@@ -8,7 +8,9 @@ function Rules() {
   return (
     <>
       <div>
-        <button onClick={() => setOpenPopup(!openPopup)}>Rules</button>
+        <button className="rulesBtn" onClick={() => setOpenPopup(!openPopup)}>
+          Rules
+        </button>
       </div>
       {openPopup && (
         <div style={overlayStyle}>
