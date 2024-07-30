@@ -106,8 +106,6 @@ function Usercomponent({
                   ) : (
                     ""
                   )}
-                </div>
-                <div className="row bottom">
                   {isRock ? (
                     <>
                       <p className="picked">YOU PICKED</p>
