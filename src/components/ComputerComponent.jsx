@@ -78,7 +78,7 @@ function ComputerComponent({
   return (
     <>
       <div className="cmpbackground">
-        <div className="container">
+        <div className="">
           <div className="pyramid" style={{ backgroundImage: "unset" }}>
             <div className="center">
               {isComPaper && (

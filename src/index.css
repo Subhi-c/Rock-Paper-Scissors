@@ -138,3 +138,21 @@ button {
   color: #fff;
   border-radius: 5px;
 }
+@media (max-width: 500px) {
+  #root,
+  .d-flexCol,
+  .d-flex {
+    width: 100% !important;
+  }
+  .score-card {
+    width: 90% !important;
+    margin: 10px !important;
+  }
+  .container {
+    width: 320px !important;
+  }
+  .d-flex {
+    margin-top: 20px;
+    justify-content: space-between !important;
+  }
+}

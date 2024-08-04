@@ -75,7 +75,7 @@ function Usercomponent({
       ) : (
         <>
           <div className="background">
-            <div className="container">
+            <div className="">
               <div className="pyramid" style={{ backgroundImage: bgImage }}>
                 <div className="center">
                   {isPaper ? (
