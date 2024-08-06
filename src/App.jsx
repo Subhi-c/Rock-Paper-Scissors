@@ -1,8 +1,8 @@
 import { useState } from "react";
 import "./App.css";
-import Computercomponent from "./components/Computercomponent";
-import Scorecard from "./components/Scorecard";
 import Usercomponent from "./components/Usercomponent";
+import ComputerComponent from "./components/Computercomponent";
+import Scorecard from "./components/Scorecard";
 import Resultcomponent from "./components/Resultcomponent";
 import Rules from "./components/Rules";
 
@@ -22,7 +22,7 @@ function App() {
   return (
     <>
       <Scorecard score={score} setscore={setscore} />
-      <div className="d-flex">
+      <div className={youpicked ? "d-flex" : "d-flexini"}>
         <Usercomponent
           youpicked={youpicked}
           setyoupicked={setyoupicked}
@@ -38,7 +38,7 @@ function App() {
           setisScissors={setisScissors}
         />
         {youpicked ? (
-          <Computercomponent
+          <ComputerComponent
             cmppicked={cmppicked}
             setcmppicked={setcmppicked}
             youWin={youWin}

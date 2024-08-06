@@ -1,6 +1,12 @@
 .d-flex {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  width: 500px;
+}
+.d-flexini {
+  display: flex;
+  align-items: center;
   justify-content: center;
   width: 500px;
 }

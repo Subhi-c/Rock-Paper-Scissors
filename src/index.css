@@ -141,7 +141,8 @@ button {
 @media (max-width: 500px) {
   #root,
   .d-flexCol,
-  .d-flex {
+  .d-flex,
+  .d-flexini {
     width: 100% !important;
   }
   .score-card {
@@ -151,7 +152,8 @@ button {
   .container {
     width: 320px !important;
   }
-  .d-flex {
+  .d-flex,
+  .d-flexini {
     margin-top: 20px;
     justify-content: space-between !important;
   }
